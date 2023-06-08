@@ -89,7 +89,7 @@ class _UpdateUserFormState extends State<UpdateUser> {
       dialogType: DialogType.warning,
       headerAnimationLoop: false,
       // animType: AnimType.topSlide,
-      title: 'Confirma Exclusão???',
+      title: 'Confirmar exclusão?',
       btnCancelOnPress: () => Navigator.pop(context),
       btnOkText: 'Sim',
       btnOkOnPress: () {

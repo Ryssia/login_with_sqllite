@@ -53,7 +53,7 @@ class UserTextField extends StatelessWidget {
         ),
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'Por favor Digite $hintName';
+            return 'Por favor digite $hintName';
           }
           if ((hintName == 'Email') && !validateEmail(value)) {
             return 'Digite um email válido';

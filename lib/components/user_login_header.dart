@@ -22,7 +22,7 @@ class UserLoginHeader extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         const Text(
-          'Aula de Dispositivos Móveis',
+          'Atividade de Dispositivos Móveis',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 25,

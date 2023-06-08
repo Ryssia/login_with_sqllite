@@ -7,11 +7,6 @@ void main() {
   runApp(const MaterialApp(
     initialRoute: RoutesApp.home,
     onGenerateRoute: RoutesApp.generateRoute,
-    // onGenerateInitialRoutes: (initialRoute) => [
-    //   MaterialPageRoute(
-    //     builder: (context) => const LoginForm(),
-    //   )
-    // ],
     debugShowCheckedModeBanner: false,
   ));
 }

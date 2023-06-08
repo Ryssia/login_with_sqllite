@@ -4,8 +4,12 @@ import 'package:login_with_sqllite/screen/login_form.dart';
 import 'package:login_with_sqllite/screen/signup_form.dart';
 import 'package:login_with_sqllite/screen/update_form.dart';
 
+import '../../screen/afterlogin.dart';
+
 class RoutesApp {
   static const home = '/';
+  //declarar aqui uma nova tela
+  static const afterLogin = '/afterLogin';
   static const loginSgnup = '/loginSignup';
   static const loginUpdate = '/loginUpdate';
 
@@ -17,6 +21,12 @@ class RoutesApp {
 
       case loginSgnup:
         return MaterialPageRoute(builder: (context) => const SignUp());
+      case afterLogin:
+        return MaterialPageRoute(
+            builder: (context) => AfterLogin(
+                  userModel: (arguments as UserModel),
+                ),
+            settings: settings);
 
       case loginUpdate:
         if (arguments is UserModel) {

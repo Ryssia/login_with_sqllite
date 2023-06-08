@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_with_sqllite/screen/update_form.dart';
 
 import '../common/messages/messages.dart';
 import '../common/routes/view_routes.dart';
@@ -77,7 +78,7 @@ class _LoginFormState extends State<LoginForm> {
                             } else {
                               Navigator.pushNamed(
                                 context,
-                                RoutesApp.loginUpdate,
+                                RoutesApp.afterLogin, //novaTela
                                 arguments: user,
                               );
                             }
@@ -105,7 +106,7 @@ class _LoginFormState extends State<LoginForm> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const Text('Possui uma Conta???'),
+                      const Text('Não possui conta?'),
                       TextButton(
                         onPressed: () {
                           Navigator.pushNamedAndRemoveUntil(
@@ -113,7 +114,7 @@ class _LoginFormState extends State<LoginForm> {
                               RoutesApp.loginSgnup,
                               (Route<dynamic> route) => false);
                         },
-                        child: const Text('Cadastra-se'),
+                        child: const Text('Cadastrar-se'),
                       )
                     ],
                   ),

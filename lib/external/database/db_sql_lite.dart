@@ -1,8 +1,11 @@
+import 'package:login_with_sqllite/external/database/tarefa_table.dart';
 import 'package:login_with_sqllite/external/database/user_table_schema.dart';
 import 'package:login_with_sqllite/model/user_mapper.dart';
 import 'package:login_with_sqllite/model/user_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../../model/tarefa_model.dart';
 
 class SqlLiteDb {
   //static final SqlLiteDb instance = SqlLiteDb._();
@@ -35,6 +38,7 @@ class SqlLiteDb {
   // executa script de criacao de tabelas
   Future<void> _onCreateSchema(Database db, int? versao) async {
     await db.execute(UserTableSchema.createUserTableScript());
+    await db.execute(TarefaTableSchema.createTarefaTableScript());
   }
 
   Future<int> saveUser(UserModel user) async {
@@ -81,5 +85,37 @@ class SqlLiteDb {
     }
 
     return null;
+  }
+
+  Future<int> saveTarefa(TarefaModel tarefa) async {
+    var dbClient = await dbInstance;
+    print(tarefa.toMap());
+    var res = await dbClient.insert(
+      TarefaTableSchema.nameTable,
+      tarefa.toMap(),
+    );
+
+    return res;
+  }
+
+  Future<List<TarefaModel>> getTarefas({required UserModel userModel}) async {
+    var dbClient = await dbInstance;
+    var res = await dbClient.query(
+      TarefaTableSchema.nameTable,
+      where: '${TarefaTableSchema.userIDColumn} = ?',
+      whereArgs: [userModel.userId],
+    );
+    print(res);
+    return res.map((map) => TarefaModel.fromMap(map)).toList();
+  }
+
+  Future<int> deleteTarefa(String tarefaId) async {
+    var dbClient = await dbInstance;
+    var res = await dbClient.delete(
+      TarefaTableSchema.nameTable,
+      where: '${TarefaTableSchema.tarefaIDColumn} = ?',
+      whereArgs: [tarefaId],
+    );
+    return res;
   }
 }
