@@ -1,6 +1,11 @@
 # login_with_sqllite
 
 A new Flutter project.
+______________________________________________________
+
+Trabalho de Dispositivos móveis, segundo bimestre
+Link do vídeo com a explicação do código: https://youtu.be/80_Q-DAIej4
+______________________________________________________
 
 ## Getting Started
 
